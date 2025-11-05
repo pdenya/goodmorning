@@ -36,8 +36,8 @@ name, url
 "Cat Pictures", "https://www.reddit.com/r/catpictures/new/"
 EOF
 
-# Create 1st-of-the-month.csv
-cat > 1st-of-the-month.csv << 'EOF'
+# Create day-of-month-1.csv
+cat > day-of-month-1.csv << 'EOF'
 name, url
 "Educational Aww", "https://www.reddit.com/r/Awwducational/new/"
 EOF

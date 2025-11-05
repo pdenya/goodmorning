@@ -20,12 +20,11 @@ if [ -f "$day_csv" ]; then
     all_urls="$all_urls $urls"
 fi
 
-# If it's the 1st of the month, add URLs from 1st-of-the-month.csv
-if [ "$day_of_month" = "1" ]; then
-    if [ -f "1st-of-the-month.csv" ]; then
-        urls=$(tail -n +2 "1st-of-the-month.csv" | cut -d'"' -f4)
-        all_urls="$all_urls $urls"
-    fi
+# Check for day-of-month specific CSV (e.g., day-of-month-1.csv, day-of-month-15.csv)
+day_of_month_csv="day-of-month-${day_of_month}.csv"
+if [ -f "$day_of_month_csv" ]; then
+    urls=$(tail -n +2 "$day_of_month_csv" | cut -d'"' -f4)
+    all_urls="$all_urls $urls"
 fi
 
 # Open all URLs in a new Brave window
