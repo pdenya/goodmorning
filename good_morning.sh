@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "☀️ Good morning! Opening your tabs..."
+
 # Get current day of week and day of month
 day_of_week=$(date +%A | tr '[:upper:]' '[:lower:]')
 day_of_month=$(date +%d | sed 's/^0*//')

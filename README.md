@@ -21,6 +21,16 @@ To create the initial CSVs in the expected format run:
 ./setup.sh
 ```
 
+### Optional: Create an alias
+
+To make it easier to run from anywhere, create a shell alias:
+
+```bash
+./alias.sh
+```
+
+Now you can just type `good morning` from anywhere to run the script!
+
 ## Adding Items
 
 To interactively add items to any CSV file (including creating new day-of-month files):
