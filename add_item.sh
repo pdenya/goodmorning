@@ -28,9 +28,34 @@ done
 # Add option to create new day-of-month file
 csv_files+=("NEW day-of-month file")
 
+# Function to display file contents
+display_file_contents() {
+    local file=$1
+    if [ -f "$file" ]; then
+        echo -e "\n${YELLOW}## $file${NC}"
+        tail -n +2 "$file" | while IFS=',' read -r name url; do
+            # Trim quotes and whitespace
+            name=$(echo "$name" | sed 's/^[[:space:]]*"//;s/"[[:space:]]*$//')
+            url=$(echo "$url" | sed 's/^[[:space:]]*"//;s/"[[:space:]]*$//')
+            if [ -n "$name" ]; then
+                echo -e "   - $name → $url"
+            fi
+        done
+    fi
+}
+
 # Display menu
 echo -e "${BLUE}=== Add Item to GoodMorning ===${NC}\n"
-echo "Select a CSV file to add to:"
+
+# Show contents of all files first
+echo -e "${BLUE}Current contents:${NC}"
+for file in "${csv_files[@]}"; do
+    if [ "$file" != "NEW day-of-month file" ]; then
+        display_file_contents "$file"
+    fi
+done
+
+echo -e "\n${BLUE}Select a CSV file to add to:${NC}"
 echo ""
 
 for i in "${!csv_files[@]}"; do
